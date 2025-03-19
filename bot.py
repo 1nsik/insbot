@@ -4,6 +4,8 @@ import os
 from dotenv import load_dotenv
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters.command import Command
+from aiogram.client.default import DefaultBotProperties
+from aiogram.enums import ParseMode
 
 
 logging.basicConfig(level = logging.INFO)
@@ -11,7 +13,7 @@ logging.basicConfig(level = logging.INFO)
 load_dotenv()
 TOKEN = os.getenv("BOT_TOKEN")
 
-bot = Bot(token = TOKEN)
+bot = Bot(token = TOKEN, default = DefaultBotProperties(parse_mode = ParseMode.HTML))
 dp = Dispatcher()
 
 @dp.message(Command("start"))
